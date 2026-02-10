@@ -1,35 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect } from "react";
+import { io } from "socket.io-client";
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  useEffect(() => {
+    const socket = io("http://localhost:3001");
+
+    socket.on("connect", () => {
+      console.log("Connected:", socket.id);
+
+      socket.emit("join-room", { roomId: "room-1" });
+
+      socket.emit("stroke-complete", {
+        roomId: "room-1",
+        stroke: {
+          tool: "pen",
+          path: [{ x: 1, y: 1 }, { x: 2, y: 2 }]
+        }
+      });
+    });
+
+    socket.on("canvas-state", (data) => {
+      console.log("Canvas state:", data);
+    });
+
+    // cleanup on unmount (VERY important)
+    return () => {
+      socket.disconnect();
+    };
+  }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div>
+      <h1>Whiteboard Socket Test</h1>
+      <p>Open the console to see socket logs</p>
+    </div>
+  );
 }
-
-export default App

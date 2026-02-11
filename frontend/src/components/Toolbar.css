@@ -1,0 +1,187 @@
+.toolbar {
+  width: 60px;
+  background-color: var(--color-bg-toolbar);
+  border-right: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: visible;
+  box-shadow: var(--shadow-md);
+  margin: var(--spacing-md);
+  margin-right: 0;
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-sm) 0;
+}
+
+.toolbar-main {
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-xs) 0;
+  gap: var(--spacing-xs);
+}
+
+.tool-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.tool-btn {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-size: 20px;
+  color: var(--color-text);
+  transition: all var(--transition-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.tool-btn:hover:not(:disabled) {
+  background-color: var(--color-bg-main);
+  transform: scale(1.05);
+}
+
+.tool-btn.active {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
+.tool-btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.tool-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.tool-icon {
+  font-size: 22px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shapes-menu {
+  position: absolute;
+  left: calc(100% + var(--spacing-sm));
+  top: 0;
+  background-color: var(--color-bg-toolbar);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xs);
+  box-shadow: var(--shadow-lg);
+  z-index: 1000;
+  min-width: 140px;
+  animation: slideIn var(--transition-fast);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.shape-option {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 14px;
+  text-align: left;
+  transition: all var(--transition-base);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  color: var(--color-text);
+  margin-bottom: 2px;
+}
+
+.shape-option:last-child {
+  margin-bottom: 0;
+}
+
+.shape-option:hover {
+  background-color: var(--color-bg-main);
+  transform: translateX(2px);
+}
+
+.shape-option.active {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
+.shape-icon {
+  font-size: 16px;
+  width: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toolbar-footer {
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-xs) 0;
+  gap: var(--spacing-xs);
+  border-top: 1px solid var(--color-border);
+  align-items: center;
+  padding-top: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
+}
+
+.color-separator {
+  width: 32px;
+  height: 1px;
+  background-color: var(--color-border);
+  margin: var(--spacing-xs) 0;
+}
+
+.color-indicator {
+  width: 32px;
+  height: 32px;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  background-color: currentColor;
+  box-shadow: var(--shadow-sm);
+}
+
+.color-indicator:hover {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-border-hover);
+}
+
+@media (max-width: 768px) {
+  .toolbar {
+    width: 56px;
+    margin: var(--spacing-sm);
+  }
+
+  .tool-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .tool-icon {
+    font-size: 18px;
+  }
+}

@@ -1,0 +1,246 @@
+.toolbar {
+  width: 250px;
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+}
+
+.toolbar-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.toolbar-section h3 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tool-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.tool-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 8px;
+  background-color: #ffffff;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 12px;
+}
+
+.tool-button:hover {
+  border-color: #646cff;
+  background-color: #f8f9ff;
+}
+
+.tool-button.active {
+  border-color: #646cff;
+  background-color: #646cff;
+  color: white;
+}
+
+.tool-icon {
+  font-size: 24px;
+  margin-bottom: 4px;
+}
+
+.tool-label {
+  font-size: 11px;
+  text-transform: capitalize;
+}
+
+.color-picker-container {
+  position: relative;
+}
+
+.current-color {
+  width: 100%;
+  height: 40px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.current-color:hover {
+  border-color: #646cff;
+}
+
+.color-palette {
+  position: absolute;
+  top: 48px;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.color-option {
+  width: 32px;
+  height: 32px;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.color-option:hover {
+  transform: scale(1.1);
+}
+
+.color-option.selected {
+  border-color: #646cff;
+  border-width: 3px;
+}
+
+.custom-color-input {
+  grid-column: span 5;
+  width: 100%;
+  height: 32px;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.width-selector {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.width-button {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.width-button:hover {
+  border-color: #646cff;
+  background-color: #f8f9ff;
+}
+
+.width-button.active {
+  border-color: #646cff;
+  background-color: #f8f9ff;
+}
+
+.width-preview {
+  border-radius: 50%;
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.action-button {
+  padding: 10px 16px;
+  background-color: #ffffff;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.action-button:hover:not(:disabled) {
+  border-color: #646cff;
+  background-color: #f8f9ff;
+}
+
+.action-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.action-button.clear {
+  background-color: #ffebee;
+  border-color: #ffcdd2;
+}
+
+.action-button.clear:hover {
+  border-color: #ef5350;
+  background-color: #ffcdd2;
+}
+
+@media (prefers-color-scheme: dark) {
+  .toolbar {
+    background-color: #2a2a2a;
+  }
+
+  .toolbar-section h3 {
+    color: #e0e0e0;
+  }
+
+  .tool-button,
+  .current-color,
+  .width-button,
+  .action-button {
+    background-color: #3a3a3a;
+    border-color: #4a4a4a;
+    color: #e0e0e0;
+  }
+
+  .tool-button:hover,
+  .width-button:hover,
+  .action-button:hover:not(:disabled) {
+    background-color: #4a4a4a;
+  }
+
+  .color-palette {
+    background-color: #3a3a3a;
+    border-color: #4a4a4a;
+  }
+
+  .action-button.clear {
+    background-color: #4a2a2a;
+    border-color: #6a3a3a;
+  }
+}
+
+@media (max-width: 768px) {
+  .toolbar {
+    width: 100%;
+    max-height: 200px;
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 15px;
+  }
+
+  .toolbar-section {
+    min-width: 200px;
+  }
+}

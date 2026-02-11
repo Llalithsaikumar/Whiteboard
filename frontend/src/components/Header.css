@@ -1,10 +1,13 @@
 .header {
-  background-color: #ffffff;
-  border-bottom: 1px solid #e0e0e0;
-  padding: 8px 16px;
+  background-color: var(--color-bg-toolbar);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--spacing-sm) var(--spacing-lg);
   position: relative;
   z-index: 100;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-sm);
+  margin: var(--spacing-md);
+  margin-bottom: 0;
+  border-radius: var(--radius-lg);
 }
 
 .header-content {
@@ -17,190 +20,166 @@
 .header-left {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--spacing-md);
   flex: 1;
 }
 
 .header-logo {
   font-size: 18px;
   font-weight: 600;
-  color: #333;
+  color: var(--color-text);
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: var(--spacing-xs);
 }
 
 .board-name-input {
-  padding: 6px 12px;
+  padding: var(--spacing-sm) var(--spacing-md);
   border: 1px solid transparent;
-  border-radius: 6px;
+  border-radius: var(--radius-md);
   font-size: 14px;
   font-weight: 500;
   outline: none;
-  transition: border-color 0.2s;
+  transition: all var(--transition-base);
   background-color: transparent;
   max-width: 200px;
+  color: var(--color-text);
 }
 
 .board-name-input:hover {
-  background-color: #f8f8f8;
+  background-color: var(--color-bg-main);
 }
 
 .board-name-input:focus {
-  border-color: #646cff;
-  background-color: #ffffff;
+  border-color: var(--color-primary);
+  background-color: var(--color-bg-toolbar);
+  box-shadow: 0 0 0 3px var(--color-primary-light);
 }
 
 .header-menu-btn {
   width: 32px;
   height: 32px;
   border: none;
-  border-radius: 6px;
+  border-radius: var(--radius-md);
   background-color: transparent;
   cursor: pointer;
   font-size: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.2s;
+  transition: all var(--transition-base);
+  color: var(--color-text);
 }
 
 .header-menu-btn:hover {
-  background-color: #f0f0f0;
+  background-color: var(--color-bg-main);
+  transform: scale(1.05);
 }
 
 .header-right {
   display: flex;
-  gap: 8px;
+  gap: var(--spacing-sm);
   align-items: center;
 }
 
 .header-btn {
   width: 36px;
   height: 36px;
-  border: 1px solid #d0d0d0;
-  border-radius: 6px;
-  background-color: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg-toolbar);
   cursor: pointer;
   font-size: 18px;
-  transition: all 0.2s;
+  transition: all var(--transition-base);
   display: flex;
   align-items: center;
   justify-content: center;
+  color: var(--color-text);
 }
 
 .header-btn:hover {
-  border-color: #b0b0b0;
-  background-color: #f8f8f8;
+  border-color: var(--color-border-hover);
+  background-color: var(--color-bg-main);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
 }
 
 .profile-button {
   width: 36px;
   height: 36px;
   border: none;
-  border-radius: 50%;
+  border-radius: var(--radius-full);
   background-color: transparent;
   cursor: pointer;
   padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform var(--transition-base);
+}
+
+.profile-button:hover {
+  transform: scale(1.05);
 }
 
 .profile-icon {
   width: 32px;
   height: 32px;
-  border-radius: 50%;
-  background-color: #646cff;
-  border: 2px solid #ffffff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary);
+  border: 2px solid var(--color-bg-toolbar);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition-base);
+}
+
+.profile-button:hover .profile-icon {
+  box-shadow: var(--shadow-md);
 }
 
 .present-button,
 .share-button {
-  padding: 8px 16px;
-  border: 1px solid #d0d0d0;
-  border-radius: 6px;
-  background-color: #ffffff;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg-toolbar);
   cursor: pointer;
   font-size: 14px;
   font-weight: 500;
-  transition: all 0.2s;
+  transition: all var(--transition-base);
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: var(--spacing-sm);
+  color: var(--color-text);
 }
 
 .present-button:hover,
 .share-button:hover {
-  border-color: #b0b0b0;
-  background-color: #f8f8f8;
+  border-color: var(--color-border-hover);
+  background-color: var(--color-bg-main);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
 }
 
 .share-button {
-  background-color: #646cff;
+  background-color: var(--color-primary);
   color: white;
-  border-color: #646cff;
+  border-color: var(--color-primary);
 }
 
 .share-button:hover {
-  background-color: #5558dd;
-  border-color: #5558dd;
-}
-
-@media (prefers-color-scheme: dark) {
-  .header {
-    background-color: #1a1a1a;
-    border-bottom-color: #333;
-  }
-
-  .header-logo {
-    color: #e0e0e0;
-  }
-
-  .board-name-input {
-    color: #e0e0e0;
-  }
-
-  .board-name-input:hover {
-    background-color: #2a2a2a;
-  }
-
-  .board-name-input:focus {
-    background-color: #2a2a2a;
-    border-color: #646cff;
-  }
-
-  .header-menu-btn:hover {
-    background-color: #2a2a2a;
-  }
-
-  .header-btn,
-  .present-button {
-    background-color: #2a2a2a;
-    border-color: #444;
-    color: #e0e0e0;
-  }
-
-  .header-btn:hover,
-  .present-button:hover {
-    background-color: #3a3a3a;
-    border-color: #555;
-  }
-
-  .share-button {
-    background-color: #646cff;
-    border-color: #646cff;
-  }
-
-  .share-button:hover {
-    background-color: #5558dd;
-  }
+  background-color: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+  box-shadow: var(--shadow-md);
 }
 
 @media (max-width: 768px) {
+  .header {
+    margin: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
   .header-left {
-    gap: 8px;
+    gap: var(--spacing-sm);
   }
 
   .header-logo {
@@ -213,7 +192,7 @@
   }
 
   .header-right {
-    gap: 6px;
+    gap: var(--spacing-xs);
   }
 
   .header-btn {
@@ -224,7 +203,7 @@
 
   .present-button,
   .share-button {
-    padding: 6px 12px;
+    padding: var(--spacing-sm) var(--spacing-md);
     font-size: 13px;
   }
 }

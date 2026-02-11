@@ -1,120 +1,133 @@
 .toolbar {
-  width: 100px;
-  background-color: #f5f5f5;
+  width: 60px;
+  background-color: #ffffff;
   border-right: 1px solid #e0e0e0;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   position: relative;
   overflow: visible;
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.05);
 }
 
 .toolbar-main {
-  flex: 1;
   display: flex;
   flex-direction: column;
   padding: 8px 0;
+  gap: 4px;
+}
+
+.tool-wrapper {
+  position: relative;
 }
 
 .tool-btn {
-  width: 100%;
-  min-height: 70px;
-  padding: 8px 4px;
+  width: 44px;
+  height: 44px;
+  margin: 0 auto;
+  padding: 0;
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid #e0e0e0;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 11px;
-  font-weight: 500;
+  font-size: 20px;
   color: #333;
-  text-align: center;
   transition: background-color 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-transform: uppercase;
-  line-height: 1.2;
+  position: relative;
 }
 
-.tool-btn:hover {
-  background-color: #e8e8e8;
+.tool-btn:hover:not(:disabled) {
+  background-color: #f0f0f0;
 }
 
 .tool-btn.active {
-  background-color: #646cff;
-  color: white;
+  background-color: #e8e8ff;
+  color: #646cff;
 }
 
-.tool-btn.more-tools {
-  font-size: 10px;
-  padding: 12px 4px;
-  min-height: 60px;
+.tool-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
 }
 
-.shapes-menu,
-.more-tools-menu {
-  position: absolute;
-  left: 100%;
-  background-color: #ffffff;
-  border: 1px solid #d0d0d0;
-  border-radius: 6px;
-  padding: 8px;
-  margin-left: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  z-index: 1000;
-  min-width: 120px;
+.tool-icon {
+  font-size: 22px;
+  line-height: 1;
 }
 
 .shapes-menu {
-  top: 180px;
+  position: absolute;
+  left: 100%;
+  top: 0;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 4px;
+  margin-left: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  min-width: 140px;
 }
 
-.more-tools-menu {
-  bottom: 80px;
-}
-
-.shape-option,
-.menu-option {
+.shape-option {
   width: 100%;
-  padding: 10px 12px;
+  padding: 8px 12px;
   background-color: transparent;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
-  font-size: 13px;
+  font-size: 14px;
   text-align: left;
   transition: background-color 0.2s;
-  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #333;
 }
 
-.shape-option:last-child,
-.menu-option:last-child {
-  margin-bottom: 0;
-}
-
-.shape-option:hover,
-.menu-option:hover {
+.shape-option:hover {
   background-color: #f0f0f0;
 }
 
 .shape-option.active {
-  background-color: #646cff;
-  color: white;
+  background-color: #e8e8ff;
+  color: #646cff;
+}
+
+.shape-icon {
+  font-size: 16px;
+  width: 20px;
+  display: inline-block;
+  text-align: center;
 }
 
 .toolbar-footer {
-  padding: 12px;
-  border-top: 1px solid #e0e0e0;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  padding: 8px 0;
+  gap: 4px;
+  border-top: 1px solid #e0e0e0;
+  align-items: center;
+}
+
+.color-separator {
+  width: 32px;
+  height: 1px;
+  background-color: #e0e0e0;
+  margin: 4px 0;
 }
 
 .color-indicator {
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   border: 2px solid #d0d0d0;
-  border-radius: 50%;
+  border-radius: 6px;
   cursor: pointer;
   transition: transform 0.2s;
+  background-color: currentColor;
 }
 
 .color-indicator:hover {
@@ -129,26 +142,41 @@
 
   .tool-btn {
     color: #e0e0e0;
-    border-bottom-color: #333;
   }
 
-  .tool-btn:hover {
+  .tool-btn:hover:not(:disabled) {
     background-color: #2a2a2a;
   }
 
-  .shapes-menu,
-  .more-tools-menu {
+  .tool-btn.active {
+    background-color: #3a3a5a;
+    color: #8c8cff;
+  }
+
+  .shapes-menu {
     background-color: #2a2a2a;
     border-color: #444;
   }
 
-  .shape-option:hover,
-  .menu-option:hover {
+  .shape-option {
+    color: #e0e0e0;
+  }
+
+  .shape-option:hover {
     background-color: #3a3a3a;
+  }
+
+  .shape-option.active {
+    background-color: #3a3a5a;
+    color: #8c8cff;
   }
 
   .toolbar-footer {
     border-top-color: #333;
+  }
+
+  .color-separator {
+    background-color: #444;
   }
 
   .color-indicator {
@@ -158,11 +186,15 @@
 
 @media (max-width: 768px) {
   .toolbar {
-    width: 80px;
+    width: 56px;
   }
 
   .tool-btn {
-    font-size: 9px;
-    min-height: 60px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .tool-icon {
+    font-size: 18px;
   }
 }

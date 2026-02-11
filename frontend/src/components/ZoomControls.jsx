@@ -18,6 +18,10 @@ export default function ZoomControls() {
 
   return (
     <div className="zoom-controls">
+      <button className="zoom-minimap" title="Show minimap">
+        🗺️
+      </button>
+      <div className="zoom-divider"></div>
       <button className="zoom-button" onClick={handleZoomOut} title="Zoom Out">
         −
       </button>
@@ -26,6 +30,10 @@ export default function ZoomControls() {
       </button>
       <button className="zoom-button" onClick={handleZoomIn} title="Zoom In">
         +
+      </button>
+      <div className="zoom-divider"></div>
+      <button className="zoom-help" title="Help">
+        ?
       </button>
     </div>
   );

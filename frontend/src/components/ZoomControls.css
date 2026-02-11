@@ -1,27 +1,29 @@
 .zoom-controls {
   position: fixed;
-  bottom: 24px;
-  right: 24px;
+  bottom: 20px;
+  right: 20px;
   display: flex;
   align-items: center;
   background-color: #ffffff;
   border: 1px solid #d0d0d0;
   border-radius: 8px;
-  padding: 8px;
-  gap: 4px;
+  padding: 6px;
+  gap: 2px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   z-index: 50;
 }
 
-.zoom-button {
-  width: 36px;
-  height: 36px;
+.zoom-button,
+.zoom-minimap,
+.zoom-help {
+  width: 32px;
+  height: 32px;
   border: none;
   background-color: transparent;
   cursor: pointer;
-  font-size: 20px;
-  font-weight: bold;
-  border-radius: 4px;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 6px;
   transition: background-color 0.2s;
   display: flex;
   align-items: center;
@@ -29,7 +31,9 @@
   color: #333;
 }
 
-.zoom-button:hover {
+.zoom-button:hover,
+.zoom-minimap:hover,
+.zoom-help:hover {
   background-color: #f0f0f0;
 }
 
@@ -38,20 +42,33 @@
 }
 
 .zoom-display {
-  min-width: 60px;
-  height: 36px;
+  min-width: 55px;
+  height: 32px;
   border: none;
   background-color: transparent;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
-  border-radius: 4px;
+  border-radius: 6px;
   transition: background-color 0.2s;
   color: #333;
+  padding: 0 8px;
 }
 
 .zoom-display:hover {
   background-color: #f0f0f0;
+}
+
+.zoom-divider {
+  width: 1px;
+  height: 24px;
+  background-color: #e0e0e0;
+  margin: 0 4px;
+}
+
+.zoom-minimap,
+.zoom-help {
+  font-size: 16px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -61,17 +78,25 @@
   }
 
   .zoom-button,
-  .zoom-display {
+  .zoom-display,
+  .zoom-minimap,
+  .zoom-help {
     color: #e0e0e0;
   }
 
   .zoom-button:hover,
-  .zoom-display:hover {
+  .zoom-display:hover,
+  .zoom-minimap:hover,
+  .zoom-help:hover {
     background-color: #3a3a3a;
   }
 
   .zoom-button:active {
     background-color: #4a4a4a;
+  }
+
+  .zoom-divider {
+    background-color: #444;
   }
 }
 
@@ -79,5 +104,20 @@
   .zoom-controls {
     bottom: 16px;
     right: 16px;
+    padding: 4px;
+  }
+
+  .zoom-button,
+  .zoom-minimap,
+  .zoom-help {
+    width: 28px;
+    height: 28px;
+    font-size: 16px;
+  }
+
+  .zoom-display {
+    min-width: 50px;
+    height: 28px;
+    font-size: 12px;
   }
 }

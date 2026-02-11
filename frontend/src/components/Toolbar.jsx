@@ -5,14 +5,21 @@ export default function Toolbar({
   currentTool, 
   onToolChange, 
   currentColor, 
-  onClearCanvas,
+  onUndo,
+  onRedo,
+  canUndo,
+  canRedo
 }) {
   const [showShapesMenu, setShowShapesMenu] = useState(false);
-  const [showMoreTools, setShowMoreTools] = useState(false);
 
   const mainTools = [
-    { id: 'pen', label: 'P', fullLabel: 'Pen' },
-    { id: 'eraser', label: 'E', fullLabel: 'Eraser' },
+    { id: 'select', icon: '↖', fullLabel: 'Select' },
+    { id: 'pen', icon: '✏️', fullLabel: 'Pen' },
+    { id: 'text', icon: 'T', fullLabel: 'Text' },
+    { id: 'shapes', icon: '▢', fullLabel: 'Shapes', hasSubmenu: true },
+    { id: 'eraser', icon: '🧹', fullLabel: 'Eraser' },
+    { id: 'frame', icon: '⬚', fullLabel: 'Frame' },
+    { id: 'comment', icon: '💬', fullLabel: 'Comment' },
   ];
 
   return (
@@ -20,86 +27,72 @@ export default function Toolbar({
       {/* Main tool buttons */}
       <div className="toolbar-main">
         {mainTools.map((tool) => (
-          <button
-            key={tool.id}
-            className={`tool-btn ${currentTool === tool.id ? 'active' : ''}`}
-            onClick={() => onToolChange(tool.id)}
-            title={tool.fullLabel}
-          >
-            {tool.label}
-          </button>
+          <div key={tool.id} className="tool-wrapper">
+            <button
+              className={`tool-btn ${currentTool === tool.id || (tool.hasSubmenu && ['line', 'rectangle', 'circle'].includes(currentTool)) ? 'active' : ''}`}
+              onClick={() => {
+                if (tool.hasSubmenu) {
+                  setShowShapesMenu(!showShapesMenu);
+                } else {
+                  onToolChange(tool.id);
+                  setShowShapesMenu(false);
+                }
+              }}
+              title={tool.fullLabel}
+            >
+              <span className="tool-icon">{tool.icon}</span>
+            </button>
+            {tool.hasSubmenu && showShapesMenu && (
+              <div className="shapes-menu">
+                <button 
+                  className={`shape-option ${currentTool === 'line' ? 'active' : ''}`}
+                  onClick={() => {onToolChange('line'); setShowShapesMenu(false);}}
+                >
+                  <span className="shape-icon">─</span>
+                  <span>Line</span>
+                </button>
+                <button 
+                  className={`shape-option ${currentTool === 'rectangle' ? 'active' : ''}`}
+                  onClick={() => {onToolChange('rectangle'); setShowShapesMenu(false);}}
+                >
+                  <span className="shape-icon">▢</span>
+                  <span>Rectangle</span>
+                </button>
+                <button 
+                  className={`shape-option ${currentTool === 'circle' ? 'active' : ''}`}
+                  onClick={() => {onToolChange('circle'); setShowShapesMenu(false);}}
+                >
+                  <span className="shape-icon">○</span>
+                  <span>Circle</span>
+                </button>
+              </div>
+            )}
+          </div>
         ))}
-        
-        {/* Text tool */}
-        <button className="tool-btn" title="Text">
-          TEXT
-        </button>
-        
-        {/* Shapes & Lines */}
-        <button 
-          className={`tool-btn ${['line', 'rectangle', 'circle'].includes(currentTool) ? 'active' : ''}`}
-          onClick={() => setShowShapesMenu(!showShapesMenu)}
-          title="Shapes & Lines"
-        >
-          SHAPES &<br/>LINES
-        </button>
-        
-        {showShapesMenu && (
-          <div className="shapes-menu">
-            <button 
-              className={`shape-option ${currentTool === 'line' ? 'active' : ''}`}
-              onClick={() => {onToolChange('line'); setShowShapesMenu(false);}}
-            >
-              Line
-            </button>
-            <button 
-              className={`shape-option ${currentTool === 'rectangle' ? 'active' : ''}`}
-              onClick={() => {onToolChange('rectangle'); setShowShapesMenu(false);}}
-            >
-              Rectangle
-            </button>
-            <button 
-              className={`shape-option ${currentTool === 'circle' ? 'active' : ''}`}
-              onClick={() => {onToolChange('circle'); setShowShapesMenu(false);}}
-            >
-              Circle
-            </button>
-          </div>
-        )}
-        
-        {/* Frames */}
-        <button className="tool-btn" title="Frames">
-          FRAMES
-        </button>
-        
-        {/* Save or Export */}
-        <button className="tool-btn" onClick={onClearCanvas} title="Save or Export">
-          SAVE OR<br/>EXPORT
-        </button>
-        
-        {/* More Tools */}
-        <button 
-          className="tool-btn more-tools"
-          onClick={() => setShowMoreTools(!showMoreTools)}
-          title="More Tools"
-        >
-          ▶ More Tools {'>'}
-        </button>
-        
-        {showMoreTools && (
-          <div className="more-tools-menu">
-            <button className="menu-option">EMOJIS</button>
-            <button className="menu-option">COMMENTS</button>
-          </div>
-        )}
       </div>
       
-      {/* Color picker - hidden by default, can be shown with a button */}
+      {/* Bottom actions */}
       <div className="toolbar-footer">
+        <button 
+          className="tool-btn"
+          onClick={onUndo}
+          disabled={!canUndo}
+          title="Undo (Ctrl+Z)"
+        >
+          <span className="tool-icon">↶</span>
+        </button>
+        <button 
+          className="tool-btn"
+          onClick={onRedo}
+          disabled={!canRedo}
+          title="Redo (Ctrl+Y)"
+        >
+          <span className="tool-icon">↷</span>
+        </button>
+        <div className="color-separator"></div>
         <button 
           className="color-indicator"
           style={{ backgroundColor: currentColor }}
-          onClick={() => setShowShapesMenu(!showShapesMenu)}
           title="Color"
         />
       </div>

@@ -4,20 +4,34 @@ export default function Header() {
   return (
     <header className="header">
       <div className="header-content">
-        <div className="header-search">
+        <div className="header-left">
+          <div className="header-logo">
+            🎨 Whiteboard
+          </div>
           <input 
             type="text" 
-            placeholder="Search or enter board name..." 
-            className="search-input"
+            defaultValue="Untitled" 
+            className="board-name-input"
           />
+          <button className="header-menu-btn" title="More options">
+            ⋮
+          </button>
         </div>
-        <div className="header-actions">
-          <button className="collab-button">
-            Collab
+        <div className="header-right">
+          <button className="header-btn" title="Video call">
+            📹
+          </button>
+          <button className="header-btn" title="Comments">
+            💬
           </button>
           <button className="profile-button">
             <div className="profile-icon"></div>
-            Profile
+          </button>
+          <button className="present-button">
+            ▶ Present
+          </button>
+          <button className="share-button">
+            ⬆ Share
           </button>
         </div>
       </div>

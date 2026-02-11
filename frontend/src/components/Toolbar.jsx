@@ -7,7 +7,7 @@ export default function Toolbar({
   currentColor, 
   onClearCanvas,
 }) {
-  const [showColorPicker, setShowColorPicker] = useState(false);
+  const [showShapesMenu, setShowShapesMenu] = useState(false);
   const [showMoreTools, setShowMoreTools] = useState(false);
 
   const mainTools = [
@@ -38,29 +38,29 @@ export default function Toolbar({
         {/* Shapes & Lines */}
         <button 
           className={`tool-btn ${['line', 'rectangle', 'circle'].includes(currentTool) ? 'active' : ''}`}
-          onClick={() => setShowColorPicker(!showColorPicker)}
+          onClick={() => setShowShapesMenu(!showShapesMenu)}
           title="Shapes & Lines"
         >
-          SHAPS &<br/>LINES
+          SHAPES &<br/>LINES
         </button>
         
-        {showColorPicker && (
+        {showShapesMenu && (
           <div className="shapes-menu">
             <button 
               className={`shape-option ${currentTool === 'line' ? 'active' : ''}`}
-              onClick={() => {onToolChange('line'); setShowColorPicker(false);}}
+              onClick={() => {onToolChange('line'); setShowShapesMenu(false);}}
             >
               Line
             </button>
             <button 
               className={`shape-option ${currentTool === 'rectangle' ? 'active' : ''}`}
-              onClick={() => {onToolChange('rectangle'); setShowColorPicker(false);}}
+              onClick={() => {onToolChange('rectangle'); setShowShapesMenu(false);}}
             >
               Rectangle
             </button>
             <button 
               className={`shape-option ${currentTool === 'circle' ? 'active' : ''}`}
-              onClick={() => {onToolChange('circle'); setShowColorPicker(false);}}
+              onClick={() => {onToolChange('circle'); setShowShapesMenu(false);}}
             >
               Circle
             </button>
@@ -69,7 +69,7 @@ export default function Toolbar({
         
         {/* Frames */}
         <button className="tool-btn" title="Frames">
-          FRAMS
+          FRAMES
         </button>
         
         {/* Save or Export */}
@@ -99,7 +99,7 @@ export default function Toolbar({
         <button 
           className="color-indicator"
           style={{ backgroundColor: currentColor }}
-          onClick={() => setShowColorPicker(!showColorPicker)}
+          onClick={() => setShowShapesMenu(!showShapesMenu)}
           title="Color"
         />
       </div>

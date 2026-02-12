@@ -185,3 +185,94 @@
     font-size: 18px;
   }
 }
+/* Add these to the bottom of your existing Toolbar.css */
+
+/* Hidden native color input - sits behind the styled indicator */
+.color-label {
+  position: relative;
+  cursor: pointer;
+}
+
+.color-input-hidden {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+}
+
+/* Width picker menu */
+.width-menu {
+  position: absolute;
+  left: calc(100% + 8px);
+  top: 0;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+  z-index: 100;
+  min-width: 160px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.width-label {
+  font-size: 12px;
+  color: #666;
+  font-weight: 500;
+}
+
+.width-slider {
+  width: 100%;
+  accent-color: #4a6cf7;
+  cursor: pointer;
+}
+
+.width-presets {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+.width-preset {
+  flex: 1;
+  padding: 6px 4px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  background: #f8f8f8;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.width-preset:hover,
+.width-preset.active {
+  border-color: #4a6cf7;
+  background: #eef1ff;
+}
+
+.width-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Clear button */
+.clear-btn {
+  opacity: 0.7;
+}
+.clear-btn:hover {
+  opacity: 1;
+  background: #fff0f0;
+}

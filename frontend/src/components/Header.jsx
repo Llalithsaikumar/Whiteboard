@@ -1,6 +1,6 @@
 import './Header.css';
 
-export default function Header() {
+export default function Header({ onPresent, onShare, isPresenting }) {
   return (
     <header className="header">
       <div className="header-content">
@@ -8,9 +8,9 @@ export default function Header() {
           <div className="header-logo">
             🎨 Whiteboard
           </div>
-          <input 
-            type="text" 
-            defaultValue="Untitled" 
+          <input
+            type="text"
+            defaultValue="Untitled"
             className="board-name-input"
           />
           <button className="header-menu-btn" title="More options">
@@ -25,12 +25,20 @@ export default function Header() {
             💬
           </button>
           <button className="profile-button">
-            <div className="profile-icon"></div>
+            <div className="profile-icon" />
           </button>
-          <button className="present-button">
-            ▶ Present
+          <button
+            className={`present-button ${isPresenting ? 'active' : ''}`}
+            onClick={onPresent}
+            title={isPresenting ? 'Exit Presentation' : 'Present'}
+          >
+            {isPresenting ? '⏹ Exit' : '▶ Present'}
           </button>
-          <button className="share-button">
+          <button
+            className="share-button"
+            onClick={onShare}
+            title="Share board link"
+          >
             ⬆ Share
           </button>
         </div>

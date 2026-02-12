@@ -1,5 +1,17 @@
 # React + Vite
 
+## Running the Frontend
+
+1. Install dependencies:
+
+	npm install
+
+2. Start the development server:
+
+	npm run dev
+
+The app will be available at http://localhost:5173 by default.
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
